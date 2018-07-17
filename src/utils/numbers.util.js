@@ -38,5 +38,5 @@ export function restingMetabolicMan(kilos,heightCM,age){
     const cmConversion = heightCM * 4.8;
     const ageConversion = age * 5.68;
     return RMRman + cmConversion - ageConversion;
-  }
+}
    
