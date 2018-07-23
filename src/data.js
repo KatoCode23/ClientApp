@@ -7,7 +7,8 @@ export default {
             progress: 50, 
             height: 72, 
             weight: 163, 
-            age: 32
+            age: 32,
+            gender: 'M'
     
         },
         {
@@ -16,7 +17,8 @@ export default {
             progress: 75, 
             height: 68, 
             weight: 114, 
-            age: 27
+            age: 27,
+            gender: 'F'
         
         },
         {
@@ -25,7 +27,8 @@ export default {
             progress: 80, 
             height: 67, 
             weight: 114, 
-            age: 30
+            age: 30,
+            gender: 'F'
         },
         {
             id: 3, 
@@ -33,8 +36,8 @@ export default {
             progress: 40, 
             height: 73.5, 
             weight: 185, 
-            age: 36
-    
+            age: 36,
+            gender: 'M'
         }
     ]
 };

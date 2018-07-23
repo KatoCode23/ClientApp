@@ -4,3 +4,26 @@ html {
     height: 100%;
     box-sizing: border-box;
 }
+
+.fa-home{
+    color: black;
+    font-size: 1.5rem;
+}
+
+.name{
+    text-align: center;
+    color: black;
+    font-size: 1.5rem;
+}
+
+.percent{
+    font-style: italic;
+    font-weight: 900;
+    font-size: 2rem;
+    color: green; 
+}
+
+.measurements{
+    font-style: italic;
+    font-weight: 300;
+}
