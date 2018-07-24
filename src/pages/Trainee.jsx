@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import data from '../data';
-import {inchesToCm, poundsToKilos, restingMetabolicMan, restingMetabolicWoman, manOrWoman} from '../utils/numbers.util';
+import {inchesToCm, poundsToKilos, restingMetabolic} from '../utils/numbers.util';
 
 export default class Trainee extends React.Component {
     constructor(props){
@@ -24,7 +24,7 @@ export default class Trainee extends React.Component {
                 <p className="measurements">Weight in Pounds: {currentTrainee.weight}Lbs.</p>
                 <p className="measurements">Height in Cm: {inchesToCm(currentTrainee.height)}</p>
                 <p className="measurements">Weight in Kilos: {poundsToKilos(currentTrainee.weight)}</p>
-                <p>RMR: {restingMetabolicMan(currentTrainee.height, currentTrainee.weight, currentTrainee.age, manOrWoman(currentTrainee.gender))}{restingMetabolicWoman(currentTrainee.height, currentTrainee.weight, currentTrainee.age, manOrWoman(currentTrainee.gender))}</p>
+                <p>RMR: {restingMetabolic(currentTrainee)}</p>
                 <Link to="/"><i className="fas fa-home"></i></Link>
             </div>
         );

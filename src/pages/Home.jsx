@@ -21,7 +21,7 @@ export default class Home extends React.Component {
         )  
         return (
             <div>
-                <h1>Number of trainees: {this.state.trainees.length}</h1>
+                <h1 className="home-header">Number of trainees: {this.state.trainees.length}</h1>
                 <ul>{trainees}</ul>
             </div>
         );

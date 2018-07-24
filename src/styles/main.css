@@ -5,6 +5,12 @@ html {
     box-sizing: border-box;
 }
 
+.home-header{
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+}
+
 .fa-home{
     color: black;
     font-size: 1.5rem;

@@ -4,17 +4,16 @@
  */
 
  /**
- * @function manOrWoman
+ * @function restingMetabolic
  * @description Specifies weather the client is male or female
  * @param {String} gender - is the client male or female 
  * @returns {Boolean} The gender of the current client as boolean, true meanin man and false meaning woman
  */
-export function manOrWoman(gender) {
-    const person = gender;
-    if(person === "M"){
-        return true;
-    }else if(person === "F"){
-        return false;
+export function restingMetabolic(trainee) {
+    if(trainee.gender === "M"){
+        return restingMetabolicMan(trainee).toFixed(2);
+    }else if(trainee.gender === "F"){
+        return restingMetabolicWoman(trainee).toFixed(2);
     }
 }
 
@@ -48,13 +47,11 @@ export function poundsToKilos(pounds){
  * @param {Number} age - Client's age
  * @returns {Number} Coverted cm plus converted kilos minus 5.68 times client's age = The value of a male resting metabolic rate(RMR)
 */
-export function restingMetabolicMan(kilos,heightCM,age, gender){
-    const RMRman = kilos * 13.4 + 88.4;
-    const cmConversion = heightCM * 4.8;
-    const ageConversion = age * 5.68;
-    if(gender === true){
-    return (RMRman + cmConversion) - ageConversion;
-    }
+export function restingMetabolicMan(trainee){
+    const RMRman = poundsToKilos(trainee.weight) * 13.4 + 88.4;
+    const cmConversion = inchesToCm(trainee.height) * 4.8;
+    const ageConversion = trainee.age * 5.68;
+    return RMRman + cmConversion - ageConversion;
 }
 
 /**
@@ -65,13 +62,11 @@ export function restingMetabolicMan(kilos,heightCM,age, gender){
  * @param {Number} age - Client's age
  * @returns {Number} Coverted cm plus converted kilos minus 4.33 times client's age = The value of a male resting metabolic rate(RMR)
 */
-export function restingMetabolicWoman(kilos,heightCM,age, gender){
-    const RMRman = kilos * 9.25 + 447.6;
-    const cmConversion = heightCM * 3.1;
-    const ageConversion = age * 4.33;
-    if(gender === false){
-    return (RMRman + cmConversion) - ageConversion;
-    }
+export function restingMetabolicWoman(trainee){
+    const RMRwoman = poundsToKilos(trainee.weight) * 9.25 + 447.6;
+    const cmConversion = inchesToCm(trainee.height) * 3.1;
+    const ageConversion = trainee.age * 4.33;
+    return RMRwoman + cmConversion - ageConversion;
 }
 
 
