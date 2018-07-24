@@ -35,7 +35,7 @@ export function inchesToCm(inches) {
  * @returns {Number} The kilo value of the converted pounds
 */
 export function poundsToKilos(pounds){
-    const kilos = pounds * 2.2;
+    const kilos = pounds / 2.2;
     return kilos.toFixed(2); 
 }
 
@@ -48,7 +48,7 @@ export function poundsToKilos(pounds){
  * @returns {Number} Coverted cm plus converted kilos minus 5.68 times client's age = The value of a male resting metabolic rate(RMR)
 */
 export function restingMetabolicMan(trainee){
-    const RMRman = poundsToKilos(trainee.weight) * 13.4 + 88.4;
+    const RMRman = 88.4 + poundsToKilos(trainee.weight) * 13.4;
     const cmConversion = inchesToCm(trainee.height) * 4.8;
     const ageConversion = trainee.age * 5.68;
     return RMRman + cmConversion - ageConversion;
@@ -63,7 +63,7 @@ export function restingMetabolicMan(trainee){
  * @returns {Number} Coverted cm plus converted kilos minus 4.33 times client's age = The value of a male resting metabolic rate(RMR)
 */
 export function restingMetabolicWoman(trainee){
-    const RMRwoman = poundsToKilos(trainee.weight) * 9.25 + 447.6;
+    const RMRwoman = 447.6 + poundsToKilos(trainee.weight) * 9.25;
     const cmConversion = inchesToCm(trainee.height) * 3.1;
     const ageConversion = trainee.age * 4.33;
     return RMRwoman + cmConversion - ageConversion;
