@@ -20,7 +20,7 @@ export default class Home extends React.Component {
             trainees = this.state.trainees.map(
                 (item, index) => {
                     return <li key={index}>
-                        <Link to={`/trainee/${item.id}`}>
+                        <Link to={`/trainee/${item.name}`}>
                             {item.name}
                         </Link>
                     </li>
