@@ -1,27 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import data from '../data';
+import { getData } from '../store';
 
 export default class Home extends React.Component {
     constructor() {
         super();
-        this.state = data;
-        
+        this.state = {};
+    }
+    componentWillMount() {
+        getData().then((trainees) => {
+            this.setState({
+                trainees
+            })
+        })
     }
     render() {
-        const trainees = this.state.trainees.map(
-            (item, index) => {
-            return <li key={index}>
+        let trainees = null;
+        if (this.state.trainees) {
+            trainees = this.state.trainees.map(
+                (item, index) => {
+                    return <li key={index}>
                         <Link to={`/trainee/${item.id}`}>
-                            {item.name + ' (' + item.progress + '%)'}
+                            {item.name}
                         </Link>
                     </li>
                 
-            }  
-        )  
+            })
+        }
+
         return (
             <div>
-                <h1 className="home-header">Number of trainees: {this.state.trainees.length}</h1>
+                <h1 className="home-header">Trainees</h1>
                 <ul>{trainees}</ul>
             </div>
         );
