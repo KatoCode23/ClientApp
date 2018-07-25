@@ -9,10 +9,13 @@ export default class Trainee extends React.Component {
         this.state = {};
     }
     componentDidMount() {
-        const id = this.props.match.params.traineeName;
+        const name = this.props.match.params.traineeName;
         getData().then((trainees) => {
+            const currentTrainee = trainees.find((trainee) => {
+                return (trainee.name == name);
+            });
             this.setState({
-                currentTrainee: trainees[id]
+                currentTrainee
             })
         })
     }
