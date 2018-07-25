@@ -12,7 +12,7 @@ export default class Trainee extends React.Component {
         const name = this.props.match.params.traineeName;
         getData().then((trainees) => {
             const currentTrainee = trainees.find((trainee) => {
-                return (trainee.name == name);
+                return (trainee.name === name);
             });
             this.setState({
                 currentTrainee
