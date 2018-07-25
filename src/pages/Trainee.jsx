@@ -1,30 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import data from '../data';
+import { getData } from '../store';
 import {inchesToCm, poundsToKilos, restingMetabolic} from '../utils/numbers.util';
 
 export default class Trainee extends React.Component {
-    constructor(props){
+    constructor() {
         super();
-            const id = props.match.params.traineeName;
-            this.state = {
-                currentTrainee: data.trainees[id]
-            };
+        this.state = {};
+    }
+    componentDidMount() {
+        const id = this.props.match.params.traineeName;
+        getData().then((trainees) => {
+            this.setState({
+                currentTrainee: trainees[id]
+            })
+        })
     }
     render() {
-        const currentTrainee = this.state.currentTrainee;
-        console.log(this.state);
+        let currentTrainee = null;
+        let traineeElement = null;
+        if (this.state.currentTrainee) {
+            currentTrainee = this.state.currentTrainee;
+            traineeElement = (
+                <div>
+                    <h2 className="name">{currentTrainee.name}</h2>
+                    <p>Gender: {currentTrainee.gender}</p>
+                    <p>Age: {currentTrainee.age}</p>
+                    <p>Percent Effective: <span className="percent">{currentTrainee.progress}%</span></p>
+                    <p className="measurements">Height in Inches: {currentTrainee.height}in.</p>
+                    <p className="measurements">Weight in Pounds: {currentTrainee.weight}Lbs.</p>
+                    <p className="measurements">Height in Cm: {inchesToCm(currentTrainee.height)}</p>
+                    <p className="measurements">Weight in Kilos: {poundsToKilos(currentTrainee.weight)}</p>
+                    <p>RMR: {restingMetabolic(currentTrainee)}</p>
+            </div>)
+        }
         return (
             <div>
-                <h2 className="name">{currentTrainee.name}</h2>
-                <p>Gender: {currentTrainee.gender}</p>
-                <p>Age: {currentTrainee.age}</p>
-                <p>Percent Effective: <span className="percent">{currentTrainee.progress}%</span></p>
-                <p className="measurements">Height in Inches: {currentTrainee.height}in.</p>
-                <p className="measurements">Weight in Pounds: {currentTrainee.weight}Lbs.</p>
-                <p className="measurements">Height in Cm: {inchesToCm(currentTrainee.height)}</p>
-                <p className="measurements">Weight in Kilos: {poundsToKilos(currentTrainee.weight)}</p>
-                <p>RMR: {restingMetabolic(currentTrainee)}</p>
+                {traineeElement}
                 <Link to="/"><i className="fas fa-home"></i></Link>
             </div>
         );
