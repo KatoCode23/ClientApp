@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getData } from '../store';
-import {inchesToCm, poundsToKilos, restingMetabolic} from '../utils/numbers.util';
+import {inchesToCm, poundsToKilos, restingMetabolic, workoutPercentEffective} from '../utils/numbers.util';
 
 export default class Trainee extends React.Component {
     constructor() {
@@ -20,27 +20,53 @@ export default class Trainee extends React.Component {
         })
     }
     render() {
+        const worldImage = require('../pics/3.jpg');
         let currentTrainee = null;
         let traineeElement = null;
         if (this.state.currentTrainee) {
             currentTrainee = this.state.currentTrainee;
             traineeElement = (
-                <div>
-                    <h2 className="name">{currentTrainee.name}</h2>
-                    <p>Gender: {currentTrainee.gender}</p>
-                    <p>Age: {currentTrainee.age}</p>
-                    <p>Percent Effective: <span className="percent">{currentTrainee.progress}%</span></p>
-                    <p className="measurements">Height in Inches: {currentTrainee.height}in.</p>
-                    <p className="measurements">Weight in Pounds: {currentTrainee.weight}Lbs.</p>
-                    <p className="measurements">Height in Cm: {inchesToCm(currentTrainee.height)}</p>
-                    <p className="measurements">Weight in Kilos: {poundsToKilos(currentTrainee.weight)}</p>
-                    <p>RMR: {restingMetabolic(currentTrainee)}</p>
+                <div className="main-content">
+                    <header className="home-header"><div className="header-text">{currentTrainee.name}</div></header>
+                    <Link to="/">
+                    <span className="home-image" 
+                        style={{ backgroundImage: "url(" + require(`../pics/${currentTrainee.img}.jpg`) + ")" }}>
+                    </span>
+                    </Link>
+                    <table>
+                        <tr>
+                            <th className="category">Inches</th>
+                            <th className="category">Pounds</th>
+                            <th className="category">Cm</th>
+                            <th className="category">Kilos</th>
+                            <th className="category">Gender</th>
+                            <th className="category">Age</th>
+                            <th className="category">RMR</th>
+                            </tr>
+                        <tr>
+                                <td className="category">{currentTrainee.height}</td>
+                                <td className="category">{currentTrainee.weight}</td>
+                                <td className="category">{inchesToCm(currentTrainee.height)}</td>
+                                <td className="category">{poundsToKilos(currentTrainee.weight)}</td>
+                                <td className="category">{currentTrainee.gender}</td>
+                                <td className="category">{currentTrainee.age}</td>
+                                <td className="category">{restingMetabolic(currentTrainee)}</td>
+                        </tr>
+                        <tr>
+                                <th className="category">Percent Effective</th>
+                        </tr>
+                        <tr>
+                                <td className="category">{workoutPercentEffective(currentTrainee)}</td>
+                        </tr>
+                    </table>
+                    <div className="world-box"
+                        style={{ backgroundImage: "url(" + worldImage + ")" }}>
+                    </div>
             </div>)
         }
         return (
-            <div>
+            <div> 
                 {traineeElement}
-                <Link to="/"><i className="fas fa-home"></i></Link>
             </div>
         );
     }

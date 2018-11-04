@@ -30,7 +30,7 @@ export default class Home extends React.Component {
 
         return (
             <div>
-                <h1 className="home-header">Trainees</h1>
+                <h1>Trainees</h1>
                 <ul>{trainees}</ul>
             </div>
         );
