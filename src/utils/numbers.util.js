@@ -72,14 +72,15 @@ export function restingMetabolicWoman(trainee){
 /**
  * @function workoutPercentEffective
  * @description Takes your goal and actual resullts to caculate the trainees percent effective
- * @param {Number} Gaol - Your client's goal results in terms of repitition, time and or strength
+ * @param {Number} Goal - Your client's goal results in terms of repitition, time and or strength
  * @param {Number} Actual - The client's actual results in terms of repitition, time and or strength 
  * @returns {Number} Divides the clients actual results by the the goals giving me the clients percent effective relative to the goal
 */
 export function workoutPercentEffective(trainee){
     const goal = trainee.goal.max;
     const actualResults = trainee.goal.best;
-    return actualResults / goal + "%";
+    const results = actualResults / goal;
+    return results.toFixed(2) + '%';
 }
 
 

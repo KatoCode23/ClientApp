@@ -3,20 +3,25 @@
 
 html {
     font-family: 'Roboto', sans-serif;
-    border: 5px solid red;
     font-size: 16px;
-    height: 100%;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+body{
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+}
+
 
 .home-header{
     text-align: left;
-    color: black;
+    color: white;
     display: block;
     position: fixed;
     width: 100%;
     height: 10vh;
-    border: solid red 2px;
     top: 0;
     left: 0;
 }
@@ -26,7 +31,6 @@ html {
     display: block;
     text-align: left;
     left: 15%;
-    border: solid turquoise 2px;
 }
 
 .main-content{
@@ -36,10 +40,10 @@ html {
     padding: 0;
     top: 0;
     text-align: center;
-    border: solid blue 2px;
     display: block;
     position: relative;
     box-sizing: border-box;
+    background-color: black;
 }
 
 .home-image{
@@ -48,8 +52,6 @@ html {
     left: 0;
     top: 0;
     z-index: 3;
-    border: solid maroon 2px;
-    box-shadow: 10px 5px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -86,12 +88,10 @@ th, td{
     position: absolute;
     right: 0;
     top: 0;
-    border: solid palevioletred 2px;
-    box-sizing: border-box;
 }
 
 a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
