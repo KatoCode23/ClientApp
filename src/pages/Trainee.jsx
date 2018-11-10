@@ -20,6 +20,7 @@ export default class Trainee extends React.Component {
         })
     }
     render() {
+        const mainPhoto = require(`../pics/10.jpg`)
         let currentTrainee = null;
         let traineeElement = null;
         if (this.state.currentTrainee) {
@@ -29,7 +30,7 @@ export default class Trainee extends React.Component {
                     <header className="home-header"><div className="header-text">{currentTrainee.name}</div></header>
                     <Link to="/">
                     <span className="home-image" 
-                        style={{ backgroundImage: "url(" + require(`${currentTrainee.img}.jpg`) + ")" }}>
+                        style={{ backgroundImage: "url(" + require(`../pics/${currentTrainee.img}.jpg`) + ")" }}>
                     </span>
                     </Link>
                     <table>
@@ -55,7 +56,7 @@ export default class Trainee extends React.Component {
                         </tr>
                     </table>
                     <div className="world-box"
-                        style={{ backgroundImage: "url(" + require(`${currentTrainee.img}.jpg`) + ")" }}>
+                        style={{ backgroundImage: 'url(' + mainPhoto + ')' }}>
                     </div>
             </div>)
         }
