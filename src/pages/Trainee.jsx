@@ -20,7 +20,6 @@ export default class Trainee extends React.Component {
         })
     }
     render() {
-        const worldImage = require('../pics/3.jpg');
         let currentTrainee = null;
         let traineeElement = null;
         if (this.state.currentTrainee) {
@@ -30,7 +29,7 @@ export default class Trainee extends React.Component {
                     <header className="home-header"><div className="header-text">{currentTrainee.name}</div></header>
                     <Link to="/">
                     <span className="home-image" 
-                        style={{ backgroundImage: "url(" + require(`../pics/${currentTrainee.img}.jpg`) + ")" }}>
+                        style={{ backgroundImage: "url(" + require(`${currentTrainee.img}.jpg`) + ")" }}>
                     </span>
                     </Link>
                     <table>
@@ -42,25 +41,21 @@ export default class Trainee extends React.Component {
                             <th className="category">Gender</th>
                             <th className="category">Age</th>
                             <th className="category">RMR</th>
-                            </tr>
-                        <tr>
-                                <td className="category">{currentTrainee.height}</td>
-                                <td className="category">{currentTrainee.weight}</td>
-                                <td className="category">{inchesToCm(currentTrainee.height)}</td>
-                                <td className="category">{poundsToKilos(currentTrainee.weight)}</td>
-                                <td className="category">{currentTrainee.gender}</td>
-                                <td className="category">{currentTrainee.age}</td>
-                                <td className="category">{restingMetabolic(currentTrainee)}</td>
+                            <th className="category">Percent Effective</th>
                         </tr>
                         <tr>
-                                <th className="category">Percent Effective</th>
-                        </tr>
-                        <tr>
-                                <td className="category">{workoutPercentEffective(currentTrainee)}</td>
+                                <td className="results">{currentTrainee.height}</td>
+                                <td className="results">{currentTrainee.weight}</td>
+                                <td className="results">{inchesToCm(currentTrainee.height)}</td>
+                                <td className="results">{poundsToKilos(currentTrainee.weight)}</td>
+                                <td className="results">{currentTrainee.gender}</td>
+                                <td className="results">{currentTrainee.age}</td>
+                                <td className="results">{restingMetabolic(currentTrainee)}</td>
+                                <td className="results">{workoutPercentEffective(currentTrainee)}</td>
                         </tr>
                     </table>
                     <div className="world-box"
-                        style={{ backgroundImage: "url(" + worldImage + ")" }}>
+                        style={{ backgroundImage: "url(" + require(`${currentTrainee.img}.jpg`) + ")" }}>
                     </div>
             </div>)
         }
